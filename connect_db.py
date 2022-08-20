@@ -20,9 +20,10 @@
 
 # ---------------------------------------------
 
+from ast import Delete
 import urllib
 from sqlalchemy import create_engine, Table, MetaData, Column, Integer, String, ForeignKey
-from sqlalchemy import text
+from sqlalchemy import text, delete
 from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
 from sqlalchemy.orm import sessionmaker
@@ -35,11 +36,7 @@ password = 'Baoloc@1'
 params = urllib.parse.quote_plus("DRIVER={ODBC Driver 17 for SQL Server};UID=sa;PWD=Baoloc@1;TrustServerCertificate=No;DATABASE=naruto;WSID=LAP00317;APP={Microsoft® Windows® Operating System};Trusted_Connection=No;SERVER=localhost;Description={my source}")
 
 engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % params)
-# engine = create_engine("mysql+mysqlconnector://sa:aaaa@localhost:1433/naruto")
 
-# query DB
-# connection = engine.connect()
-# curser = connection.execute("Select * from Warehouse;")
 
 # with engine.connect() as connection:
 #     result = connection.execute(text("select * from Warehouse"))
@@ -48,8 +45,6 @@ engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % params)
 #         print(row['NameOfItem'])
 
 Base = declarative_base()
-
-# Base.metadata.create_all(engine)
 
 class WareHouse(Base):
     __tablename__ = 'Warehouse'
@@ -64,9 +59,8 @@ class WareHouse(Base):
         self.Amount = Amount
         self.Category = Category
         
-# Session = sessionmaker(bind=engine)
+# Session = sessionmaker()
 # session = Session()
-
 # item1 = WareHouse(StuffID='CV0002', NameOfItem='CoVe2', Amount=3, Category='Cove')
 # session.add(item1)
 # session.commit()

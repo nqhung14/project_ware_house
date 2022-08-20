@@ -8,5 +8,4 @@ class Warehouse:
 #         self.set_name = name
 #     def set_amount(self,amount):
 #         self.set_amount = amount
-        
 # Warehouse.set_name(self, 'Hung')

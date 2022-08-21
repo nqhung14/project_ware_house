@@ -1,4 +1,3 @@
-from ast import Delete
 import connect_db
 from connect_db import WareHouse
 from sqlalchemy.orm import sessionmaker

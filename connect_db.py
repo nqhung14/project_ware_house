@@ -34,17 +34,14 @@ username = 'sa'
 password = 'Baoloc@1'
 
 params = urllib.parse.quote_plus("DRIVER={ODBC Driver 17 for SQL Server};UID=sa;PWD=Baoloc@1;TrustServerCertificate=No;DATABASE=naruto;WSID=LAP00317;APP={Microsoft® Windows® Operating System};Trusted_Connection=No;SERVER=localhost;Description={my source}")
-
 engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % params)
-
+Base = declarative_base()
 
 # with engine.connect() as connection:
 #     result = connection.execute(text("select * from Warehouse"))
 #     for row in result:
 #         print(row['StuffID'])
 #         print(row['NameOfItem'])
-
-Base = declarative_base()
 
 class WareHouse(Base):
     __tablename__ = 'Warehouse'

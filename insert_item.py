@@ -1,4 +1,4 @@
-import connect_db
+from connect_db import engine
 from sqlalchemy.orm import sessionmaker
 
 print('Input new item')
@@ -12,7 +12,7 @@ while True:
     if ask == "N":
         break
 
-Session = sessionmaker(bind=connect_db.engine)
+Session = sessionmaker(bind=engine)
 session_db = Session()
 session_db.add(insert_new_item)
 session_db.commit()

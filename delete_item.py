@@ -1,9 +1,8 @@
-import connect_db
-from connect_db import WareHouse
+from connect_db import WareHouse, engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import delete
 
-Session = sessionmaker(bind=connect_db.engine)
+Session = sessionmaker(bind=engine)
 session_db = Session()
 
 print('Input id of item to delete: ')

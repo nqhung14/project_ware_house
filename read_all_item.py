@@ -1,8 +1,7 @@
-from connect_db import WareHouse, engine
+from connect_db import WareHouse, engine, Session
 from sqlalchemy.orm import sessionmaker
 
-Session = sessionmaker(bind=engine)
-session_db = Session()
+session_db = Session(bind=engine)
 
 # Query all data of WareHouse
 all_item = session_db.query(WareHouse).all()

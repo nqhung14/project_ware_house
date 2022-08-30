@@ -1,8 +1,7 @@
-from connect_db import WareHouse, engine
+from connect_db import WareHouse, engine, Session
 from sqlalchemy.orm import sessionmaker
 
-Session = sessionmaker(bind=engine)
-session_db = Session()
+session_db = Session(bind=engine)
 
 print('Input ID of item to update ')
 while True:
@@ -18,7 +17,7 @@ while True:
     ask = input('Do you want input more? (Y/N) ')
     if ask == "N":
         break
-    
+
 session_db.commit()
 print(update_item.Amount)
 
